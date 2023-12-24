@@ -1,16 +1,16 @@
 import React from 'react'
-
+import { sql } from "@vercel/postgres";
 export const dynamicParams = false
 
 
 export async function generateStaticParams() {
   try {
-    const categories = await fetch(`http://${process.env.API_URL}/api/best-of-categories?populate=*`)
-    const categoriesJson = await categories.json()
-    const data = categoriesJson.data
-    const paths = data.map((service) => {
-      return { params: { path: service.attributes.path } }
+    const { rows } = await sql`SELECT * from services`;
+
+    const paths = rows.map((service) => {
+      return  { path: service.name }
     })
+    console.log(paths)
     return paths
   } catch (error) { 
     console.log(error)
