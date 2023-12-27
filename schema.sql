@@ -1,8 +1,7 @@
 CREATE TABLE "best_of_category"(
     "id" BIGINT NOT NULL,
     "path" VARCHAR(255) NOT NULL,
-    "service_type_id" VARCHAR(255) CHECK
-        ("service_type_id" IN('')) NOT NULL
+    "service_type_id" VARCHAR(255) CHECK ("service_type_id" IN('')) NOT NULL 'NOTE#######dropped constrain best_of_category_service_type_id_check'
 );
 ALTER TABLE
     "best_of_category" ADD PRIMARY KEY("id");
@@ -11,8 +10,8 @@ CREATE TABLE "service_provider_timing"(
     "service_provider_id" BIGINT NOT NULL,
     "day" VARCHAR(255) CHECK
         ("day" IN('')) NOT NULL,
-        "opening_time" TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
-        "closing_time" TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL
+        "opening_time" time NOT NULL,
+        "closing_time" time NOT NULL
 );
 ALTER TABLE
     "service_provider_timing" ADD PRIMARY KEY("id");
@@ -22,6 +21,8 @@ CREATE TABLE "service_type"(
 );
 ALTER TABLE
     "service_type" ADD PRIMARY KEY("id");
+ALTER TABLE 
+    "service_type" ADD CONSTRAINT unique_constraint UNIQUE (name );
 CREATE TABLE "service_provider_best_of_category_join_table"(
     "id" BIGINT NOT NULL,
     "best_of_category_id" BIGINT NOT NULL,
@@ -47,7 +48,7 @@ CREATE TABLE "service_provider"(
     "pincode" INTEGER NOT NULL,
     "email" VARCHAR(255) NOT NULL,
     "review_count" INTEGER NOT NULL,
-    "service_category" UUID NOT NULL
+    "service_category" VARCHAR(255) NOT NULL
 );
 ALTER TABLE
     "service_provider" ADD PRIMARY KEY("id");
@@ -65,9 +66,8 @@ ALTER TABLE
     "reviews" ADD PRIMARY KEY("id");
 CREATE TABLE "services"(
     "id" BIGINT NOT NULL,
-    "service_type_id" VARCHAR(255) CHECK
-        ("service_type_id" IN('')) NOT NULL,
-        "service_provider_id" BIGINT NOT NULL
+    "service_type_id" VARCHAR(255) CHECK ("service_type_id" IN('')) NOT NULL,`NOTE ##########Droped constraint services_service_type_id_check`
+    "service_provider_id" BIGINT NOT NULL
 );
 ALTER TABLE
     "services" ADD PRIMARY KEY("id");
