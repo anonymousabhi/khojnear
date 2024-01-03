@@ -1,5 +1,5 @@
 import './globals.css'
-import Link from 'next/link';
+import Navbar from '@/app/components/Navbar'
 
 export const metadata = {
   title: 'Khoj Near',
@@ -11,10 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
       <header>
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/about">About Us</Link>
-        </nav>
+        <Navbar />
       </header>
       <div>{children}</div>
       </body>
