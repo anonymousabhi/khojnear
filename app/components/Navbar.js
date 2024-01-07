@@ -12,7 +12,7 @@ function classNames(...classes) {
 export default function Navbar({ cities }) {
   const pages = [
     { name: 'Home', href: '/', current: true },
-    { name: 'About', href: '/about', current: false },
+    { name: 'Contact Us', href: '/contact-us', current: false },
   ]
 
   console.log('cities', cities)
