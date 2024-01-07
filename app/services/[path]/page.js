@@ -5,15 +5,15 @@ export const dynamicParams = false
 
 export async function generateStaticParams() {
   try {
-    const { rows } = await sql`SELECT * from services`;
-
+    const { rows } = await sql`SELECT * from best_of_category`;
+    console.log('rows', rows)
     const paths = rows.map((service) => {
-      return  { path: service.name }
+      return  { path: service.path }
     })
-    console.log(paths)
+    console.log('paths', paths)
     return paths
   } catch (error) { 
-    console.log(error)
+    console.log('error', error)
     return [
       { path: '' }
     ]

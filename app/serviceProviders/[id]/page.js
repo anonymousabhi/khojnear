@@ -1,6 +1,7 @@
 
 import { sql } from "@vercel/postgres";
 
+// TODO: change from camelCase to dash-case
 export default async function ServiceProviders({params}) {
 
   const serviceProviderId = params.id;

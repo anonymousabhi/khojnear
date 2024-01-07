@@ -25,7 +25,7 @@ export default function Example() {
                 <div className="flex-shrink-0 flex items-center">
                   <Link href="/">
                   <img
-                    className="hidden lg:block w-auto"
+                    className="hidden h-8 lg:block w-auto"
                     src="/khojnear_logo.png"
                     alt="Khoj Near"
                   />
